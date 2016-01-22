@@ -44,6 +44,10 @@ body {
   }
 }
 
+.container a#bigtitle {
+    text-decoration: none;
+}
+
 article.single section,
 .article-list article {
   background-color: #f2f0ec;

@@ -2,7 +2,7 @@
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="{{ if eq .Description "" }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}">
+<meta name="description" content="{{ if eq .Description "" }}{{ .Site.Params.subtitle }}{{ else }}{{ .Description }}{{ end }}">
 <meta name="keywords" content="{{ delimit .Keywords  "," }}">
 <meta name="author" content="{{ .Site.Params.author }}">
 {{ .Hugo.Generator }}
@@ -16,8 +16,12 @@
 
 <header>
   <div class="container">
-    <a class="path" href="{{ .Site.BaseURL }}">[{{ .Site.Title }}]</a>
-    <span class="caret"># _</span>
+    <span class="caret">[{{ .Site.Title }}] #_ {{ .Site.Params.subtitle }}</span>
+    <br>
+    <a class="path" href="{{ .Site.BaseURL }}">[{{ .Site.Params.homepage }}]</a>
+    {{ range $index, $page := (where .Site.Pages "Type" "page") }}
+      <a class="path" href="{{ .RelPermalink }}">[{{ .Title }}]</a>
+    {{ end }}
   </div>
 </header>
 
